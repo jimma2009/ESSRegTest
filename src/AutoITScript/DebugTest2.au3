@@ -1,0 +1,2 @@
+
+ConsoleWrite("Hello from AUTOIT.");

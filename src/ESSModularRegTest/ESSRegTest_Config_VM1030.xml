@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Default Suite">
+    <!--suite name="Default Suite" parallel="classes" thread-count="4"-->
+
+    <test name="ESSRegTest">
+        <classes>
+
+            <class name="ESSModularRegTest.PreModularTest"/>
+
+            <class name="ESSModularRegTest.ESSRegTestG_WorkFlowII"/>
+            <class name="ESSModularRegTest.ESSRegTestL_WorkFlow_Leave"/>
+
+            <!--
+                <class name="ESSModularRegTest.ESSRegTestA_General"/>
+                <class name="ESSModularRegTest.ESSRegTestB_Team"/>
+                <class name="ESSModularRegTest.ESSRegTestC_UserActivation"/>
+                <class name="ESSModularRegTest.ESSRegTestD_UserDetails"/>
+                <class name="ESSModularRegTest.ESSRegTestE_Leave"/>
+                <class name="ESSModularRegTest.ESSRegTestF_WorkFlow"/>
+                <class name="ESSModularRegTest.ESSRegTestG_WorkFlowII"/>
+                <class name="ESSModularRegTest.ESSRegTestH_NewStarter"/>
+                <class name="ESSModularRegTest.ESSRegTestI_Sync"/>
+                <class name="ESSModularRegTest.ESSRegTestL_WorkFlow_Leave" />
+                <class name="ESSModularRegTest.ESSRegTestN_EnvChangeMP" />
+
+            -->
+
+
+        </classes>
+    </test> <!-- ESSRegTest -->
+</suite> <!-- Default Suite -->

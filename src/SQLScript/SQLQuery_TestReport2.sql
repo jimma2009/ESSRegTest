@@ -1,0 +1,10 @@
+SELECT TOP (1000) [Serail No]
+      ,[Item No]
+	  ,[Item Name]
+      ,[Test Result]
+      ,[Description]
+      ,[Comment]
+      ,[testSerialNo]
+      ,[Test Time]
+      
+  FROM [AutoLoginDBForRestore].[dbo].[TestResult_ESS] where [testSerialNo]='sn235' order by [Test Time]

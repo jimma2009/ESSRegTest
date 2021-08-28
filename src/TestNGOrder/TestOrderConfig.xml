@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Default Suite">
+    <test name="ESSRegTest">
+        <classes>
+
+            <class name="TestNGOrder.ClassB"/>
+            <class name="TestNGOrder.ClassC"/>
+            <class name="TestNGOrder.ClassA"/>
+        </classes>
+    </test> <!-- ESSRegTest -->
+</suite> <!-- Default Suite -->

@@ -1,0 +1,31 @@
+2018-12-04 22:02:59 : *** Start Saving Implement eHR Grid via Sage MicrOpay.
+2018-12-04 22:03:31 : Exit Sage MicrOpay is clicked.
+2018-12-04 22:03:33 : Evolution.exe is closed.
+2018-12-04 22:03:33 : Sage MicrOpay is closed.
+2018-12-04 22:03:48 : Sage Micropay is launched.
+2018-12-04 22:03:48 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220348_04122018.png
+2018-12-04 22:04:48 : Delay 70 Seconds.
+2018-12-04 22:04:50 : Payroll DB ESS_Auto_Payroll2 is selected.
+2018-12-04 22:04:50 : Password is input.
+2018-12-04 22:05:05 : Log on Sage Micropay as Admin user successfully.
+2018-12-04 22:05:05 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220505_04122018.png
+2018-12-04 22:05:14 : Extra Dialogue is shown.
+2018-12-04 22:05:14 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220514_04122018.png
+2018-12-04 22:05:14 : OK button is clicked.
+2018-12-04 22:05:18 : Implement HR screen is shown.
+2018-12-04 22:05:18 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220518_04122018.png
+2018-12-04 22:05:40 : Implement eHR checkbox is clicked.
+2018-12-04 22:05:40 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220540_04122018.png
+2018-12-04 22:05:42 : Save Grid button is clicked.
+2018-12-04 22:05:52 : File Path C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Grid_ImplementEHR_220543_04122018.csv is input.
+2018-12-04 22:05:52 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220552_04122018.png
+2018-12-04 22:05:54 : Save button is clicked.
+2018-12-04 22:05:59 : Review Now - No button is clicked.
+2018-12-04 22:05:59 : Grid Implement EHR is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Grid_ImplementEHR_220543_04122018.csv
+2018-12-04 22:06:02 : Implement HR Changes screen is closed.
+2018-12-04 22:06:02 : Screenshot is saved as C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Screenshot_220602_04122018.png
+2018-12-04 22:06:04 : Exit Sage MicrOpay is clicked.
+2018-12-04 22:06:06 : Evolution.exe is closed.
+2018-12-04 22:06:06 : Sage MicrOpay is closed.
+2018-12-04 22:06:16 : Console Writer String: C:\TestAutomationProject\ESSRegTest\src\AutoITScript\AutoITLog\Grid_ImplementEHR_220543_04122018.csv
+2018-12-04 22:06:16 : *** End of Saving Implement eHR Grid via Sage MicrOpay.
