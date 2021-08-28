@@ -14,7 +14,7 @@ public class ESSRegTest_Debug2 {
 
     @Test
     public static void test1(){
-        System.out.println("Hello TestNG.");
+        System.out.println("Hello TestNG 2.");
     }
 
     @Test
