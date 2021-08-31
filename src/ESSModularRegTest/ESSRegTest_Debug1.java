@@ -108,7 +108,7 @@ public class ESSRegTest_Debug1 {
 
     @Test
     public static void test11() throws InterruptedException {
-        logMessage("Hello Java!");
+        logMessage("Hello Java! 2");
     }
 
 
