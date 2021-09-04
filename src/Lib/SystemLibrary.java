@@ -1230,26 +1230,58 @@ public class SystemLibrary {
 
     public static boolean tickCheckbox(String strCheckOption, WebElement element_CheckBox, WebDriver driver) throws InterruptedException {
         //checkOption: 1- Check, 2- Uncheck
+        boolean isDone=false;
+        int errorCounter=0;
 
-        boolean isChanged=false;
         if (strCheckOption.equals("1")){
             if (element_CheckBox.isSelected()==false){
                 //element_CheckBox.click();
                 new Actions(driver).moveToElement(element_CheckBox).click().perform();
-                isChanged=true;
-                logMessage("Element is checked.");
+                if (element_CheckBox.isSelected()){
+                    logMessage("Element is checked.");
+                }
+                else{
+                    logWarning("Element is NOT checked. Try 2nd attempt.");
+                    ///////////////
+                    JavascriptExecutor executor = (JavascriptExecutor) driver;
+                    //executor.executeScript("arguments[0].scrollIntoView(true);",  PageObj_General.checkbox_SyncFromPayroll(driver));
+                    executor.executeScript("arguments[0].click();", element_CheckBox);
+                    if (element_CheckBox.isSelected()){
+                        logMessage("Element is checked.");
+                    }else{
+                        logError("Element is NOT checked.");
+                        errorCounter++;
+                    }
+                    //////
+                }
+
             }
         }
         else if (strCheckOption.equals("2")){
             if (element_CheckBox.isSelected()){
                 //element_CheckBox.click();
                 new Actions(driver).moveToElement(element_CheckBox).click().perform();
-                isChanged=true;
-                logMessage("Element is unchecked.");
+                if (!element_CheckBox.isSelected()){
+                    logMessage("Element is unchecked.");
+                }else{
+                    logWarning("Checkbox is NOT unchecked. Try 2nd attempt.");
+                    ////////////////////////
+                    JavascriptExecutor executor = (JavascriptExecutor) driver;
+                    //executor.executeScript("arguments[0].scrollIntoView(true);",  PageObj_General.checkbox_SyncFromPayroll(driver));
+                    executor.executeScript("arguments[0].click();", element_CheckBox);
+                    if (!element_CheckBox.isSelected()){
+                        logMessage("Element is Unchecked.");
+                    }else{
+                        logError("Element is NOT Unchecked.");
+                        errorCounter++;
+                    }
+                    //////
+                }
+
             }
         }
-
-        return isChanged;
+        if (errorCounter>0) isDone=false;
+        return isDone;
     }
 
     public static int getTotalCountFromTable(String tableXpath, WebDriver driver){
@@ -2532,6 +2564,11 @@ public class SystemLibrary {
                 element.sendKeys(Keys.BACK_SPACE);
             }
         }
+    }
+
+    public static void refreshPage(WebDriver driver) throws InterruptedException {
+        driver.navigate().refresh();
+        Thread.sleep(10000);
     }
     //////////////////////// Debug here //////////////////////
 
