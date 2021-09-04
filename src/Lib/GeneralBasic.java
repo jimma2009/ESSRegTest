@@ -2,10 +2,7 @@ package Lib;
 
 import PageObject.*;
 import org.apache.commons.lang3.time.StopWatch;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
@@ -680,10 +677,10 @@ public class GeneralBasic {
 
         displaySettings_Integration(driver);
 
-        int orginalAPICount = PageObj_Integration.getWebAPIKeysTotalCount(driver);
+        int orginalAPICount = PageObj_General.getWebAPIKeysTotalCount(driver);
         Thread.sleep(3000);
 
-        PageObj_Integration.button_AddAPIKey(driver).click();
+        PageObj_General.button_AddAPIKey(driver).click();
         logMessage("Add Button is clicked.");
 
         String dataSourceFilePathName = "C:\\TestAutomationProject\\ESSRegTest\\DataSource\\GUIKey_" + testSerialNo + ".txt";
@@ -698,26 +695,26 @@ public class GeneralBasic {
         }
 
         if (userName != null) {
-            PageObj_Integration.textbox_Username(driver).click();
-            PageObj_Integration.textbox_Username(driver).sendKeys(userName);
+            PageObj_General.textbox_Username(driver).click();
+            PageObj_General.textbox_Username(driver).sendKeys(userName);
             logMessage("Username: " + userName + " is input.");
         }
 
         if (password != null) {
-            PageObj_Integration.textbox_Password(driver).click();
-            PageObj_Integration.textbox_Password(driver).sendKeys(password);
+            PageObj_General.textbox_Password(driver).click();
+            PageObj_General.textbox_Password(driver).sendKeys(password);
             logMessage("Password: " + password + " is input.");
         }
 
         if (apiKey != null) {
-            PageObj_Integration.textbox_Apikey(driver).click();
-            PageObj_Integration.textbox_Apikey(driver).sendKeys(apiKey);
+            PageObj_General.textbox_Apikey(driver).click();
+            PageObj_General.textbox_Apikey(driver).sendKeys(apiKey);
             logMessage("Api Key: " + apiKey + " is input.");
         }
 
         if (databaseAlias != null) {
-            PageObj_Integration.textbox_DatabaseAlias(driver).click();
-            PageObj_Integration.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
+            PageObj_General.textbox_DatabaseAlias(driver).click();
+            PageObj_General.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
             logMessage("Database Alias: " + databaseAlias + " is input.");
         }
 
@@ -727,24 +724,24 @@ public class GeneralBasic {
                 termFromDate = SystemLibrary.getExpectedDate(termFromDate, null);
             }
 
-            PageObj_Integration.textbox_TermFromDate(driver).click();
-            PageObj_Integration.textbox_TermFromDate(driver).sendKeys(termFromDate);
+            PageObj_General.textbox_TermFromDate(driver).click();
+            PageObj_General.textbox_TermFromDate(driver).sendKeys(termFromDate);
             logMessage("Import Terminated Employees from Date: " + termFromDate + " is input.");
         }
 
         logMessage("Screenshot before click Add Button.");
-        logScreenshotElement(driver, PageObj_Integration.form_AddEditAPIKey(driver));
+        logScreenshotElement(driver, PageObj_General.form_AddEditAPIKey(driver));
 
-        PageObj_Integration.button_AddEdit(driver).click();
+        PageObj_General.button_AddEdit(driver).click();
         logMessage("Button Add is clicked.");
         Thread.sleep(10000);
 		logScreenshot(driver);
-        String currentErrorMessage = PageObj_Integration.getReturnErrorMessageFromIntegrationScreen(driver);
+        String currentErrorMessage = PageObj_General.getReturnErrorMessageFromIntegrationScreen(driver);
         if (currentErrorMessage != null) {
             if (currentErrorMessage.length() > 0) {
                 logMessage("The current return message is:\n" + currentErrorMessage);
                 logMessage("The current screenshot of error message from screen.");
-                logScreenshotElement(driver, PageObj_Integration.label_ErrorMessageReturn(driver));
+                logScreenshotElement(driver, PageObj_General.label_ErrorMessageReturn(driver));
             }
         }
 
@@ -765,7 +762,7 @@ public class GeneralBasic {
             }
         }
 
-        int currentAPIKeyCount = PageObj_Integration.getWebAPIKeysTotalCount(driver);
+        int currentAPIKeyCount = PageObj_General.getWebAPIKeysTotalCount(driver);
 
         if ((currentAPIKeyCount - orginalAPICount) == 0) {
             logError("No API Key is added.");
@@ -787,10 +784,10 @@ public class GeneralBasic {
 
         displaySettings_Integration(driver);
 
-        int orginalAPICount = PageObj_Integration.getWebAPIKeysTotalCount(driver);
+        int orginalAPICount = PageObj_General.getWebAPIKeysTotalCount(driver);
         Thread.sleep(3000);
 
-        PageObj_Integration.button_AddAPIKey(driver).click();
+        PageObj_General.button_AddAPIKey(driver).click();
         logMessage("Add Button is clicked.");
 
         String dataSourceFilePathName = "C:\\TestAutomationProject\\ESSRegTest\\DataSource\\GUIKey_" + testSerialNo + "_" + dbName + ".txt";
@@ -805,26 +802,26 @@ public class GeneralBasic {
         }
 
         if (userName != null) {
-            PageObj_Integration.textbox_Username(driver).click();
-            PageObj_Integration.textbox_Username(driver).sendKeys(userName);
+            PageObj_General.textbox_Username(driver).click();
+            PageObj_General.textbox_Username(driver).sendKeys(userName);
             logMessage("Username: " + userName + " is input.");
         }
 
         if (password != null) {
-            PageObj_Integration.textbox_Password(driver).click();
-            PageObj_Integration.textbox_Password(driver).sendKeys(password);
+            PageObj_General.textbox_Password(driver).click();
+            PageObj_General.textbox_Password(driver).sendKeys(password);
             logMessage("Password: " + password + " is input.");
         }
 
         if (apiKey != null) {
-            PageObj_Integration.textbox_Apikey(driver).click();
-            PageObj_Integration.textbox_Apikey(driver).sendKeys(apiKey);
+            PageObj_General.textbox_Apikey(driver).click();
+            PageObj_General.textbox_Apikey(driver).sendKeys(apiKey);
             logMessage("Api Key: " + apiKey + " is input.");
         }
 
         if (databaseAlias != null) {
-            PageObj_Integration.textbox_DatabaseAlias(driver).click();
-            PageObj_Integration.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
+            PageObj_General.textbox_DatabaseAlias(driver).click();
+            PageObj_General.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
             logMessage("Database Alias: " + databaseAlias + " is input.");
         }
 
@@ -834,24 +831,24 @@ public class GeneralBasic {
                 termFromDate = SystemLibrary.getExpectedDate(termFromDate, null);
             }
 
-            PageObj_Integration.textbox_TermFromDate(driver).click();
-            PageObj_Integration.textbox_TermFromDate(driver).sendKeys(termFromDate);
+            PageObj_General.textbox_TermFromDate(driver).click();
+            PageObj_General.textbox_TermFromDate(driver).sendKeys(termFromDate);
             logMessage("Import Terminated Employees from Date: " + termFromDate + " is input.");
         }
 
         logMessage("Screenshot before click Add Button.");
-        logScreenshotElement(driver, PageObj_Integration.form_AddEditAPIKey(driver));
+        logScreenshotElement(driver, PageObj_General.form_AddEditAPIKey(driver));
 
-        PageObj_Integration.button_AddEdit(driver).click();
+        PageObj_General.button_AddEdit(driver).click();
         logMessage("Button Add is clicked.");
         Thread.sleep(10000);
 
-        String currentErrorMessage = PageObj_Integration.getReturnErrorMessageFromIntegrationScreen(driver);
+        String currentErrorMessage = PageObj_General.getReturnErrorMessageFromIntegrationScreen(driver);
         if (currentErrorMessage != null) {
             if (currentErrorMessage.length() > 0) {
                 logMessage("The current return message is:\n" + currentErrorMessage);
                 logMessage("The current screenshot of error message from screen.");
-                logScreenshotElement(driver, PageObj_Integration.label_ErrorMessageReturn(driver));
+                logScreenshotElement(driver, PageObj_General.label_ErrorMessageReturn(driver));
             }
         }
 
@@ -872,7 +869,7 @@ public class GeneralBasic {
             }
         }
 
-        int currentAPIKeyCount = PageObj_Integration.getWebAPIKeysTotalCount(driver);
+        int currentAPIKeyCount = PageObj_General.getWebAPIKeysTotalCount(driver);
 
         if ((currentAPIKeyCount - orginalAPICount) == 0) {
             logError("No API Key is added.");
@@ -936,7 +933,7 @@ public class GeneralBasic {
         GeneralBasic.displaySettings_Integration(driver);
         boolean isRemoved = false;
 
-        if (PageObj_Integration.clickIntegrationAPIKeysButton(apiKey, driver)) {
+        if (PageObj_General.clickIntegrationAPIKeysButton(apiKey, driver)) {
             driver.findElement(By.linkText("Remove")).click();
             Thread.sleep(3000);
             GeneralBasic.waitSpinnerDisappear(120, driver);
@@ -1151,6 +1148,130 @@ public class GeneralBasic {
     }
 
     public static boolean syncAllData(WebDriver driver, String expectedMessage) throws InterruptedException, IOException {
+        boolean isPassed = false;
+        int errorCounter = 0;
+
+        if (displaySettings_Integration(driver)){
+            //////////////////////
+            Thread.sleep(5000);
+            //driver.navigate().to(driver.getCurrentUrl());
+            driver.navigate().refresh();
+            Thread.sleep(15000);
+            waitSpinnerDisappear(120, driver);
+            //Get original message from Web API Log
+            String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
+
+            logMessage("Check 'Sync from Payroll'");
+            tickCheckbox("1", PageObj_General.checkbox_SyncFromPayroll(driver), driver);
+
+            logMessage("UnCheck 'Sync Balances For Leave Report.");
+            tickCheckbox("2", PageObj_General.checkbox_SyncBalancesForLeaveReport(driver), driver);
+            logScreenshot(driver);
+
+            PageObj_General.button_Sync(driver).click();
+            Thread.sleep(3000);
+            logMessage("Sync button is clicked.");
+
+            //Click OK button
+            PageObj_General.button_YesSyncAll(driver).click();
+            logMessage("Yes, Sync All button is clicked.");
+            Thread.sleep(20000);
+            waitSpinnerDisappear(120, driver);
+
+            String currentMessage = null;
+            //////////////// Jim adjusted on 19/07/2021 for 20 mins /////////////////
+            int i = 0;
+            for (i = 0; i <= 80; i++) {  //Wait maxim for 20 min
+                //Click Refresh button
+                PageObj_General.button_RefreshSync(driver).click();
+                Thread.sleep(15000);
+                GeneralBasic.waitSpinnerDisappear(120, driver);
+                currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
+                //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
+                if (currentMessage.contains("Successfully imported")) {
+                    logMessage("It tooks " + i * 15 + " Seconds to Sync from Payroll.");
+                    break;
+                }
+            }
+
+            logMessage("The final Sync from Payroll Message is '" + currentMessage + "'.");
+            logScreenshot(driver);
+
+            if (expectedMessage != null) {
+                if (currentMessage.contains(expectedMessage)) {
+                    logMessage("Completed Sync from Payroll Successfullly");
+                    isPassed = true;
+                }
+                else {
+                    logError("Failed Sync from Payroll Data.");
+                    System.out.println("Expected log message: '" + expectedMessage + "'");
+                    errorCounter++;
+                }
+            }
+            //////
+
+            ///////////////////// Sync Balance for Leave Report ///////////////////
+            logMessage("Refresh General Page.");
+            SystemLibrary.refreshPage(driver);
+
+            logMessage("UnCheck 'Sync from Payroll'");
+            tickCheckbox("2", PageObj_General.checkbox_SyncFromPayroll(driver), driver);
+
+            logMessage("Check 'Sync Balances For Leave Report.");
+            tickCheckbox("1", PageObj_General.checkbox_SyncBalancesForLeaveReport(driver), driver);
+            logScreenshot(driver);
+
+            PageObj_General.button_Sync(driver).click();
+            Thread.sleep(3000);
+            logMessage("Sync button is clicked.");
+
+            //Click OK button
+            PageObj_General.button_YesSyncLeaveBalance(driver).click();
+            logMessage("Yes, Sync Leave Balance button is clicked.");
+            Thread.sleep(20000);
+            waitSpinnerDisappear(120, driver);
+
+            currentMessage = null;
+            //////////////// Jim adjusted on 19/07/2021 for 20 mins /////////////////
+            int j = 0;
+            for (j = 0; j <= 80; j++) {  //Wait maxim for 20 min
+                //Click Refresh button
+                PageObj_General.button_RefreshSync(driver).click();
+                Thread.sleep(15000);
+                GeneralBasic.waitSpinnerDisappear(120, driver);
+                currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
+                //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
+                if (currentMessage.contains("Successfully synced leave balances")) {
+                    logMessage("It tooks " + j * 15 + " Seconds to Sync Balance For Leave Report.");
+                    break;
+                }
+            }
+
+            logMessage("The final Sync Balance For Leave Report Message is '" + currentMessage + "'.");
+            logScreenshot(driver);
+
+            if (expectedMessage != null) {
+                if (currentMessage.contains("Successfully synced leave")) {
+                    logMessage("Completed Sync Balance for Leave Report Successfullly");
+                    isPassed = true;
+                }
+                else {
+                    logError("Failed Sync Balance for Leave Report.");
+                    System.out.println("Expected log message: 'Successfully synced leave'");
+                    errorCounter++;
+                }
+            }
+
+            //////
+        }else{
+            errorCounter++;
+        }
+
+        if (errorCounter == 0) isPassed = true;
+        return isPassed;
+    }
+
+    public static boolean syncAllData_OLD(WebDriver driver, String expectedMessage) throws InterruptedException, IOException {
         boolean isPassed = true;
         int errorCounter = 0;
 
@@ -1162,17 +1283,17 @@ public class GeneralBasic {
             Thread.sleep(15000);
             waitSpinnerDisappear(120, driver);
             //Get original message from Web API Log
-            String originalMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+            String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
 
-            PageObj_Integration.ellipsisButton_WebAPISync(driver).click();
+            PageObj_General.button_Sync(driver).click();
             Thread.sleep(3000);
             logMessage("Ellipsis button in Web API Sync section is clicked.");
             logScreenshot(driver);
-            PageObj_Integration.button_SyncAllData(driver).click();
+            PageObj_General.button_SyncAllData(driver).click();
             Thread.sleep(3000);
             logMessage("Sync All Data button is clicked.");
             //Click OK button
-            PageObj_Integration.button_YesSyncAll(driver).click();
+            PageObj_General.button_YesSyncAll(driver).click();
             logMessage("Yes, Sync All button is clicked.");
             Thread.sleep(20000);
             waitSpinnerDisappear(120, driver);
@@ -1182,10 +1303,10 @@ public class GeneralBasic {
             int i = 0;
             for (i = 0; i <= 80; i++) {  //Wait maxim for 20 min
                 //Click Refresh button
-                PageObj_Integration.button_RefreshSync(driver).click();
+                PageObj_General.button_RefreshSync(driver).click();
                 Thread.sleep(15000);
                 GeneralBasic.waitSpinnerDisappear(120, driver);
-                currentMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+                currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
                 //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
                 if (currentMessage.contains("Successfully imported")) {
                     logMessage("It tooks " + i * 15 + " Seconds to Sync All Data.");
@@ -1222,6 +1343,8 @@ public class GeneralBasic {
         return isPassed;
     }
 
+
+
     public static boolean syncAllDataSimultaneously(WebDriver driver, String expectedMessage) throws InterruptedException, IOException {
         boolean isPassed = true;
         int errorCounter = 0;
@@ -1233,17 +1356,17 @@ public class GeneralBasic {
         Thread.sleep(5000);
         waitSpinnerDisappear(120, driver);
         //Get original message from Web API Log
-        String originalMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+        String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
 
-        PageObj_Integration.ellipsisButton_WebAPISync(driver).click();
+        PageObj_General.button_Sync(driver).click();
         Thread.sleep(3000);
         logMessage("Ellipsis button in Web API Sync section is clicked.");
 
-        PageObj_Integration.button_SyncAllData(driver).click();
+        PageObj_General.button_SyncAllData(driver).click();
         Thread.sleep(3000);
         logMessage("Sync All Data button is clicked.");
         //Click OK button
-        PageObj_Integration.button_YesSyncAll(driver).click();
+        PageObj_General.button_YesSyncAll(driver).click();
         logMessage("Yes, Sync All button is clicked.");
         Thread.sleep(20000);
         waitSpinnerDisappear(120, driver);
@@ -1254,15 +1377,15 @@ public class GeneralBasic {
         Thread.sleep(5000);
         waitSpinnerDisappear(120, driver);
 
-        PageObj_Integration.ellipsisButton_WebAPISync(driver).click();
+        PageObj_General.button_Sync(driver).click();
         Thread.sleep(3000);
         logMessage("Ellipsis button in Web API Sync section is clicked.");
 
-        PageObj_Integration.button_SyncChanges(driver).click();
+        PageObj_General.button_SyncChanges(driver).click();
         Thread.sleep(3000);
         logMessage("Sync Changes button is clicked.");
         //Click OK button
-        PageObj_Integration.button_YesSyncChanges(driver).click();
+        PageObj_General.button_YesSyncChanges(driver).click();
         logMessage("Yes, Sync Changes button is clicked.");
         Thread.sleep(20000);
         waitSpinnerDisappear(120, driver);
@@ -1274,10 +1397,10 @@ public class GeneralBasic {
         int i = 0;
         for (i = 0; i <= 40; i++) {  //Wait maxim for 10 min
             //Click Refresh button
-            PageObj_Integration.button_RefreshSync(driver).click();
+            PageObj_General.button_RefreshSync(driver).click();
             Thread.sleep(15000);
             GeneralBasic.waitSpinnerDisappear(120, driver);
-            currentMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+            currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
             //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
             if (currentMessage.contains("Successfully imported")) {
                 logMessage("It tooks " + i * 15 + " Seconds to Sync All Data.");
@@ -3033,7 +3156,7 @@ public class GeneralBasic {
         }
 
         displaySettings_Integration(driver);
-        if (PageObj_Integration.clickIntegrationAPIKeysButton(apiKey, driver)) {
+        if (PageObj_General.clickIntegrationAPIKeysButton(apiKey, driver)) {
             driver.findElement(By.linkText("Edit")).click();
             Thread.sleep(2000);
             logMessage("Web API Edit menu is clicked.");
@@ -3042,9 +3165,9 @@ public class GeneralBasic {
         }
 
         if (userName != null) {
-            PageObj_Integration.textbox_Username(driver).click();
-            clearTextBox(PageObj_Integration.textbox_Username(driver));
-            PageObj_Integration.textbox_Username(driver).sendKeys(userName);
+            PageObj_General.textbox_Username(driver).click();
+            clearTextBox(PageObj_General.textbox_Username(driver));
+            PageObj_General.textbox_Username(driver).sendKeys(userName);
             logMessage("Username: " + userName + " is input.");
         }
 
@@ -3052,16 +3175,16 @@ public class GeneralBasic {
 
 
         if (apiKey != null) {
-            PageObj_Integration.textbox_Apikey(driver).click();
-            clearTextBox(PageObj_Integration.textbox_Apikey(driver));
-            PageObj_Integration.textbox_Apikey(driver).sendKeys(apiKey);
+            PageObj_General.textbox_Apikey(driver).click();
+            clearTextBox(PageObj_General.textbox_Apikey(driver));
+            PageObj_General.textbox_Apikey(driver).sendKeys(apiKey);
             logMessage("Api Key: " + apiKey + " is input.");
         }
 
         if (databaseAlias != null) {
-            PageObj_Integration.textbox_DatabaseAlias(driver).click();
-            clearTextBox(PageObj_Integration.textbox_DatabaseAlias(driver));
-            PageObj_Integration.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
+            PageObj_General.textbox_DatabaseAlias(driver).click();
+            clearTextBox(PageObj_General.textbox_DatabaseAlias(driver));
+            PageObj_General.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
             logMessage("Database Alias: " + databaseAlias + " is input.");
         }
 
@@ -3071,25 +3194,25 @@ public class GeneralBasic {
                 termFromDate = SystemLibrary.getExpectedDate(termFromDate, null);
             }
 
-            PageObj_Integration.textbox_TermFromDate(driver).click();
-            clearTextBox(PageObj_Integration.textbox_TermFromDate(driver));
-            PageObj_Integration.textbox_TermFromDate(driver).sendKeys(termFromDate);
+            PageObj_General.textbox_TermFromDate(driver).click();
+            clearTextBox(PageObj_General.textbox_TermFromDate(driver));
+            PageObj_General.textbox_TermFromDate(driver).sendKeys(termFromDate);
             logMessage("Import Terminated Employees from Date: " + termFromDate + " is input.");
         }
 
         logMessage("Screenshot before click Save Button.");
 
-        logScreenshotElement(driver, PageObj_Integration.form_AddEditAPIKey(driver));
-        PageObj_Integration.button_AddEdit(driver).click();
+        logScreenshotElement(driver, PageObj_General.form_AddEditAPIKey(driver));
+        PageObj_General.button_AddEdit(driver).click();
         logMessage("Button Add is clicked.");
         Thread.sleep(10000);
 
-        String currentErrorMessage = PageObj_Integration.getReturnErrorMessageFromIntegrationScreen(driver);
+        String currentErrorMessage = PageObj_General.getReturnErrorMessageFromIntegrationScreen(driver);
         if (currentErrorMessage != null) {
             if (currentErrorMessage.length() > 0) {
                 logMessage("The current return message is:\n" + currentErrorMessage);
                 logMessage("The current screenshot of error message from screen.");
-                logScreenshotElement(driver, PageObj_Integration.label_ErrorMessageReturn(driver));
+                logScreenshotElement(driver, PageObj_General.label_ErrorMessageReturn(driver));
             }
         }
 
@@ -9092,7 +9215,7 @@ public class GeneralBasic {
         boolean isPassed = false;
         int errorCounter = 0;
         if (GeneralBasic.displaySettings_Integration(driver)) {
-            PageObj_Integration.button_AddAPIKey(driver).click();
+            PageObj_General.button_AddAPIKey(driver).click();
             Thread.sleep(3000);
             logMessage("Add New Web API button is clicked.");
             logScreenshot(driver);
@@ -14561,18 +14684,18 @@ public class GeneralBasic {
         Thread.sleep(15000);
         waitSpinnerDisappear(120, driver);
         //Get original message from Web API Log
-        String originalMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+        String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
 
-        PageObj_Integration.ellipsisButton_WebAPISync(driver).click();
+        PageObj_General.button_Sync(driver).click();
         Thread.sleep(3000);
         logMessage("Ellipsis button in Web API Sync section is clicked.");
 
-        PageObj_Integration.button_SyncChanges(driver).click();
+        PageObj_General.button_SyncChanges(driver).click();
         Thread.sleep(3000);
         logMessage("Sync Changes button is clicked.");
         logScreenshot(driver);
         //Click OK button
-        PageObj_Integration.button_YesSyncChanges(driver).click();
+        PageObj_General.button_YesSyncChanges(driver).click();
         logMessage("Yes, Sync Changes button is clicked.");
         Thread.sleep(20000);
         waitSpinnerDisappear(120, driver);
@@ -14583,10 +14706,10 @@ public class GeneralBasic {
         int i = 0;
         for (i = 0; i <= 40; i++) {  //Wait maxim for 10 min
             //Click Refresh button
-            PageObj_Integration.button_RefreshSync(driver).click();
+            PageObj_General.button_RefreshSync(driver).click();
             Thread.sleep(15000);
             GeneralBasic.waitSpinnerDisappear(120, driver);
-            currentMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+            currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
             //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
             if (currentMessage.contains("Successfully imported") || currentMessage.contains(expectedMessage)) {
                 logMessage("It tooks " + i * 15 + " Seconds to Sync changes.");
@@ -14626,13 +14749,13 @@ public class GeneralBasic {
         Thread.sleep(5000);
         waitSpinnerDisappear(120, driver);
         //Get original message from Web API Log
-        String originalMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+        String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
 
-        PageObj_Integration.ellipsisButton_WebAPISync(driver).click();
+        PageObj_General.button_Sync(driver).click();
         Thread.sleep(3000);
         logMessage("Ellipsis button in Web API Sync section is clicked.");
 
-        PageObj_Integration.button_SyncChanges(driver).click();
+        PageObj_General.button_SyncChanges(driver).click();
         Thread.sleep(3000);
         logMessage("Sync Changes button is clicked.");
         logScreenshot(driver);
@@ -14645,43 +14768,43 @@ public class GeneralBasic {
         Thread.sleep(5000);
         waitSpinnerDisappear(120, driver2);
         //Get original message from Web API Log
-        String originalMessage2 = PageObj_Integration.getTopMessageFromWebAPILog(driver2);
+        String originalMessage2 = PageObj_General.getTopMessageFromWebAPILog(driver2);
 
-        PageObj_Integration.ellipsisButton_WebAPISync(driver2).click();
+        PageObj_General.button_Sync(driver2).click();
         Thread.sleep(1000);
         logMessage("Ellipsis button in Web API Sync section is clicked.");
 
-        PageObj_Integration.button_SyncAllData(driver2).click();
+        PageObj_General.button_SyncAllData(driver2).click();
         Thread.sleep(1000);
         logMessage("Sync All Data button is clicked.");
 
         //////
 
         //Click OK button in driver 1 and driver 2
-        PageObj_Integration.button_YesSyncChanges(driver).click();
+        PageObj_General.button_YesSyncChanges(driver).click();
         logMessage("Yes, Sync Changes button is clicked.");
         Thread.sleep(1000);
         waitSpinnerDisappear(120, driver);
         logScreenshot(driver);
 
-        PageObj_Integration.button_YesSyncAll(driver2).click();
+        PageObj_General.button_YesSyncAll(driver2).click();
         logMessage("Yes, Sync All button is clicked in driver 2.");
         Thread.sleep(1000);
         waitSpinnerDisappear(120, driver2);
 
         logMessage("Refresh both driver 1 and driver 2 pages.");
-        PageObj_Integration.button_RefreshSync(driver).click();
-        PageObj_Integration.button_RefreshSync(driver2).click();
+        PageObj_General.button_RefreshSync(driver).click();
+        PageObj_General.button_RefreshSync(driver2).click();
 
        String currentMessage = null;
 
         int i = 0;
         for (i = 0; i <= 40; i++) {  //Wait maxim for 10 min
             //Click Refresh button
-            PageObj_Integration.button_RefreshSync(driver).click();
+            PageObj_General.button_RefreshSync(driver).click();
             Thread.sleep(15000);
             GeneralBasic.waitSpinnerDisappear(120, driver);
-            currentMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+            currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
             //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
             if (currentMessage.contains("Successfully imported") || currentMessage.contains(expectedMessage)) {
                 logMessage("It tooks " + i * 15 + " Seconds to Sync changes.");
@@ -16982,7 +17105,7 @@ public class GeneralBasic {
         Thread.sleep(5000);
         waitSpinnerDisappear(120, driver);
         //Get original message from Web API Log
-        String originalMessage = PageObj_Integration.getTopMessageFromWebAPILog(driver);
+        String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
 
         if (expectedMessage != null) {
             if (originalMessage.contains(expectedMessage)) {

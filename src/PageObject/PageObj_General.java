@@ -10,7 +10,7 @@ import java.util.List;
 import static Lib.SystemLibrary.logMessage;
 import static Lib.SystemLibrary.waitChild;
 
-public class PageObj_Integration {
+public class PageObj_General {
 
     private static WebElement element=null;
 
@@ -147,20 +147,10 @@ public class PageObj_Integration {
         return logRowCount;
     }
 
-    public static WebElement ellipsisButton_WebAPISync(WebDriver driver){
+    public static WebElement button_Sync(WebDriver driver){
         WebElement element=null;
-        element=waitChild("//div[@class='page-header' and contains(h4, 'Web API Sync')]//button", 10, 1, driver);
-
-        if (element==null){
-            element=waitChild("//div[@class='page-header' and contains(h4, 'Sync with Payroll')]//button", 10, 1, driver);
-        }
-
+        element=waitChild("//button[@id='button-sync']", 15, 1, driver);
         return element;
-
-        ///////////////////// Role back by Jim for 28/07/2021 release /////////////////////
-        // return driver.findElement(By.xpath("//div[@class='page-header' and contains(h4, 'Web API Sync')]//button"));
-        ///////////////////// New UI adjusted by Govind on 06/07/2021 ///////////////
-    	//driver.findElement(By.xpath("//div[@class='page-header' and contains(h4, 'Sync Data from Payroll')]//button"));
     }
 
     public static WebElement button_YesSyncAll(WebDriver driver){
@@ -169,5 +159,17 @@ public class PageObj_Integration {
 
     public static WebElement button_YesSyncChanges(WebDriver driver){
         return driver.findElement(By.xpath("//button[@class='button--primary' and text()='Yes, sync changes']"));
+    }
+
+    public static WebElement checkbox_SyncFromPayroll(WebDriver driver){
+        return driver.findElement(By.xpath("//input[@id='SyncPayroll']"));
+    }
+
+    public static WebElement checkbox_SyncBalancesForLeaveReport(WebDriver driver){
+        return driver.findElement(By.xpath("//input[@id='SyncLB']"));
+    }
+
+    public static WebElement button_YesSyncLeaveBalance(WebDriver driver){
+        return driver.findElement(By.xpath("//button[@type='submit' and contains(text(), 'Yes, sync leave balances')]"));
     }
 }

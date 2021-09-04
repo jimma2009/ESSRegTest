@@ -1269,6 +1269,7 @@ public class ESSRegTestD_UserDetails {
 
         SystemLibrary.logMessage("*** Start Test D10321");
         WebDriver driver = GeneralBasic.launchESS(url_ESS, SystemLibrary.driverType);
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         GeneralBasicHigh.logonESSMain(101, 101, payrollDBName, testSerialNo, emailDomainName, url_ESS, driver);
 
@@ -1772,7 +1773,28 @@ public class ESSRegTestD_UserDetails {
 
     ///////////////////// Debug here  ////////////////////
 
+    @Test(priority = 10021)
+    public void testD10021_WebAPIKeyAndSync_Debug() throws InterruptedException, IOException, Exception {
+        //Step 2.3
+        SystemLibrary.logMessage("*** Start Test D10021.");
+        ESSSoftAssert myAssert = new ESSSoftAssert();
+        if (testSerialNo==null) testSerialNo=getCurrentTestSerialNumber(moduleNo, moduleName);
 
+        WebDriver driver = GeneralBasic.launchESS(url_ESS, SystemLibrary.driverType);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        GeneralBasicHigh.logonESSMain(101, 101, payrollDBName, testSerialNo, emailDomainName, url_ESS, driver); //Log on ESS as Super User
+
+      /*  SystemLibrary.logMessage("Item D1.8", testSerialNo);
+        myAssert.assertEquals(addNewWebAPIConfiguration_Main(103, 103, testSerialNo, driver), true, "Failed in Item D1.8: Add API configuration.");
+*/
+        //logMessage("Item D1.9: Sync All", testSerialNo);
+        myAssert.assertEquals(GeneralBasicHigh.syncAllData_Main(103, 103, driver), true, "Failed in Item D1.9: Sync All.");
+
+        GeneralBasic.signoutESS(driver);
+        driver.close();
+        SystemLibrary.logMessage("*** End of Test D10021.");
+        myAssert.assertAll();
+    }
 
 
 

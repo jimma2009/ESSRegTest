@@ -591,8 +591,8 @@ public class ESSRegTestC_UserActivation {
         SystemLibrary.logMessage("Item C11.2: Validate Carmin C Dashbaord.", testSerialNo);
         myAssert.assertEquals(GeneralBasicHigh.validateDashBoard_Main(71, 71, testSerialNo, emailDomainName, driver), true, "Failed in Item C11.2: Step 166: Validate Carmin C dashboard.");
 
-        SystemLibrary.logMessage("Item C11.3: Validate Carmin C Business Card.", testSerialNo);
-        myAssert.assertEquals(GeneralBasicHigh.validateMultiUserBusinessCard(81, 81, testSerialNo, emailDomainName, driver), true, "Failed in C11.3: Step 167: Validate Validate Carmin C Business Card.");
+        SystemLibrary.logMessage("Item C11.3: Validate Robin S Business Card.", testSerialNo);
+        myAssert.assertEquals(GeneralBasicHigh.validateMultiUserBusinessCard(81, 81, testSerialNo, emailDomainName, driver), true, "Failed in C11.3: Step 167: Validate Validate Robin S Business Card.");
 
         SystemLibrary.logMessage("Step 168: Display and Validate User Profile via User name icon");
         logMessage("Item C11.4", testSerialNo);

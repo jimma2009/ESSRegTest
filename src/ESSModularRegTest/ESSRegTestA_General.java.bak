@@ -1,7 +1,7 @@
 package ESSModularRegTest;
 
 import Lib.*;
-import PageObject.PageObj_Integration;
+import PageObject.PageObj_General;
 import PageObject.PageObj_NavigationBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
