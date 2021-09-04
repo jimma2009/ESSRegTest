@@ -1,7 +1,7 @@
 package ESSModularRegTest;
 
 import Lib.*;
-import PageObject.PageObj_Integration;
+import PageObject.PageObj_General;
 import PageObject.PageObj_NavigationBar;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
@@ -373,15 +373,15 @@ public class ESSRegTestA_General {
         //Step 2.17
         SystemLibrary.logMessage("Step 17: Click view more button in API Log screen.");
         GeneralBasic.displaySettings_Integration(driver);
-        int origianlLogCount = PageObj_Integration.getTotalLogCount(driver);
+        int origianlLogCount = PageObj_General.getTotalLogCount(driver);
 
-        SystemLibrary.displayElementInView(PageObj_Integration.button_ViewMore(driver), driver, 10);
-        PageObj_Integration.button_ViewMore(driver).click();
+        SystemLibrary.displayElementInView(PageObj_General.button_ViewMore(driver), driver, 10);
+        PageObj_General.button_ViewMore(driver).click();
         Thread.sleep(5000);
         GeneralBasic.waitSpinnerDisappear(60, driver);
         SystemLibrary.logMessage("View More button is clicked.");
 
-        int currentLogCount = PageObj_Integration.getTotalLogCount(driver);
+        int currentLogCount = PageObj_General.getTotalLogCount(driver);
 
         int newLogCount = currentLogCount - origianlLogCount;
         SystemLibrary.logMessage(newLogCount + " lines of logs are shown.");
