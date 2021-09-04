@@ -283,7 +283,7 @@ public class ESSRegTestA_General {
         myAssert.assertEquals(GeneralBasic.displaySettings_Leave(driver), true, "Failed in Item A2.4.6: Validate Menu - Leave.");
 
         logMessage("Item A2.4.7", testSerialNo);
-        myAssert.assertEquals(GeneralBasic.displaySettings_Integration(driver), true, "Failed in Item A2.4.7: Validate Menu - Integration.");
+        myAssert.assertEquals(GeneralBasic.displaySettings_General(driver), true, "Failed in Item A2.4.7: Validate Menu - Integration.");
 
         logMessage("Item A2.4.8: Validate Menu - Whats New", testSerialNo);
         myAssert.assertEquals(GeneralBasic.displaySettings_WhatsNew(driver), true, "Failed in Item A2.4.8: Validate Menu - Whats New.");
@@ -372,7 +372,7 @@ public class ESSRegTestA_General {
 
         //Step 2.17
         SystemLibrary.logMessage("Step 17: Click view more button in API Log screen.");
-        GeneralBasic.displaySettings_Integration(driver);
+        GeneralBasic.displaySettings_General(driver);
         int origianlLogCount = PageObj_General.getTotalLogCount(driver);
 
         SystemLibrary.displayElementInView(PageObj_General.button_ViewMore(driver), driver, 10);
@@ -458,7 +458,7 @@ public class ESSRegTestA_General {
         myAssert.assertEquals(GeneralBasic.displaySettings_RolesPermissions(driver), true, "Fail in Item A6.3.1: Display Setting - Role and Permission menu.");
 
         SystemLibrary.logMessage("Item A6.3.2", testSerialNo);
-        myAssert.assertEquals(GeneralBasic.displaySettings_Integration(driver), false, "Fail in Item A6.3.2: Display Setting - Integration Menu.");
+        myAssert.assertEquals(GeneralBasic.displaySettings_General(driver), false, "Fail in Item A6.3.2: Display Setting - Integration Menu.");
 
         SystemLibrary.logMessage("Item A6.3.3", testSerialNo);
         myAssert.assertEquals(GeneralBasic.displaySettings_Workflows(driver), false, "Fail in Item A6.3.3 Display Setting - Workflow Menu.");

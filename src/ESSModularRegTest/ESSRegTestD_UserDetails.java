@@ -1784,10 +1784,10 @@ public class ESSRegTestD_UserDetails {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         GeneralBasicHigh.logonESSMain(101, 101, payrollDBName, testSerialNo, emailDomainName, url_ESS, driver); //Log on ESS as Super User
 
-      /*  SystemLibrary.logMessage("Item D1.8", testSerialNo);
+        //SystemLibrary.logMessage("Item D1.8", testSerialNo);
         myAssert.assertEquals(addNewWebAPIConfiguration_Main(103, 103, testSerialNo, driver), true, "Failed in Item D1.8: Add API configuration.");
-*/
-        //logMessage("Item D1.9: Sync All", testSerialNo);
+
+        logMessage("Item D1.9: Sync All", testSerialNo);
         myAssert.assertEquals(GeneralBasicHigh.syncAllData_Main(103, 103, driver), true, "Failed in Item D1.9: Sync All.");
 
         GeneralBasic.signoutESS(driver);

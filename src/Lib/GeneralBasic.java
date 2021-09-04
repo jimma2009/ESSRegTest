@@ -608,7 +608,7 @@ public class GeneralBasic {
         return isShown;
     }
 
-    public static boolean displaySettings_Integration(WebDriver driver) throws InterruptedException, IOException {
+    public static boolean displaySettings_General(WebDriver driver) throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		boolean isShown=false;
 		int errorCounter=0;
@@ -675,7 +675,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
 
         int orginalAPICount = PageObj_General.getWebAPIKeysTotalCount(driver);
         Thread.sleep(3000);
@@ -782,7 +782,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
 
         int orginalAPICount = PageObj_General.getWebAPIKeysTotalCount(driver);
         Thread.sleep(3000);
@@ -930,7 +930,7 @@ public class GeneralBasic {
     }
 
     public static boolean removeIntegrationAPIKeys(String apiKey, WebDriver driver) throws InterruptedException, IOException {
-        GeneralBasic.displaySettings_Integration(driver);
+        GeneralBasic.displaySettings_General(driver);
         boolean isRemoved = false;
 
         if (PageObj_General.clickIntegrationAPIKeysButton(apiKey, driver)) {
@@ -1151,7 +1151,7 @@ public class GeneralBasic {
         boolean isPassed = false;
         int errorCounter = 0;
 
-        if (displaySettings_Integration(driver)){
+        if (displaySettings_General(driver)){
             //////////////////////
             Thread.sleep(5000);
             //driver.navigate().to(driver.getCurrentUrl());
@@ -1275,7 +1275,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        if (displaySettings_Integration(driver)){
+        if (displaySettings_General(driver)){
             //////////////////////
             Thread.sleep(5000);
             //driver.navigate().to(driver.getCurrentUrl());
@@ -1349,7 +1349,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
         Thread.sleep(5000);
         //driver.navigate().to(driver.getCurrentUrl());
         driver.navigate().refresh();
@@ -3155,7 +3155,7 @@ public class GeneralBasic {
             }
         }
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
         if (PageObj_General.clickIntegrationAPIKeysButton(apiKey, driver)) {
             driver.findElement(By.linkText("Edit")).click();
             Thread.sleep(2000);
@@ -9200,7 +9200,7 @@ public class GeneralBasic {
     public static boolean validateIntegrationPage(String storeFileName, String isUpdateStore, String isCompare, String expectedContent, String testSerialNo, String emailDomainName, WebDriver driver) throws InterruptedException, IOException, Exception {
         boolean isPassed = false;
         int errorCounter = 0;
-        if (GeneralBasic.displaySettings_Integration(driver)) {
+        if (GeneralBasic.displaySettings_General(driver)) {
             WebElement panelBody = waitChild("//div[@class='panel-body']", 10, 1, driver);
             if (!validateTextValueInWebElementInUse(panelBody, storeFileName, isUpdateStore, isCompare, expectedContent, testSerialNo, emailDomainName, driver))
                 errorCounter++;
@@ -9214,7 +9214,7 @@ public class GeneralBasic {
     public static boolean validateIntegrationPage_WebAPIConfigForm(String storeFileName, String isUpdateStore, String isCompare, String expectedContent, String testSerialNo, String emailDomainName, WebDriver driver) throws InterruptedException, IOException, Exception {
         boolean isPassed = false;
         int errorCounter = 0;
-        if (GeneralBasic.displaySettings_Integration(driver)) {
+        if (GeneralBasic.displaySettings_General(driver)) {
             PageObj_General.button_AddAPIKey(driver).click();
             Thread.sleep(3000);
             logMessage("Add New Web API button is clicked.");
@@ -14125,7 +14125,7 @@ public class GeneralBasic {
     public static boolean validateIntegrationPage_SuperFund(String storeFileName, String isUpdateStore, String isCompare, String expectedContent, String testSerialNo, String emailDomainName, WebDriver driver) throws InterruptedException, IOException, Exception {
         boolean isPassed = false;
         int errorCounter = 0;
-        if (GeneralBasic.displaySettings_Integration(driver)) {
+        if (GeneralBasic.displaySettings_General(driver)) {
             WebElement lable_DefaultSuperFunds = waitChild("//div[@class='panel-body']/div/div[@class='page-header']/h4[text()='Default Super Funds']", 10, 1, driver);
             if (lable_DefaultSuperFunds != null) {
                 logMessage("Default Super Funds are shown.");
@@ -14149,7 +14149,7 @@ public class GeneralBasic {
     public static boolean addSuperPDSFileInIntegrationPage(String storeFileName, String isUpdateStore, String isCompare, String expectedContent, String superFundName, String pdsLink, String testSerialNo, String emailDomainName, WebDriver driver) throws InterruptedException, IOException, Exception {
         boolean isPassed = false;
         int errorCounter = 0;
-        if (GeneralBasic.displaySettings_Integration(driver)) {
+        if (GeneralBasic.displaySettings_General(driver)) {
             WebElement superList = waitChild("//body/div[@id='content']/div/section[@id='page-container']/main[@class='container full']/div[@class='panel-body']/div/div[@class='page-row']/div[@class='page-section background-color-white']/div[@class='ps-content show-content']/div[@id='default-super-funds']/div[@class='list-container']/form/div[starts-with(., '" + superFundName + "')]", 10, 1, driver);
             if (superList != null) {
                 logMessage("Super Fund " + superFundName + "' are shown.");
@@ -14677,7 +14677,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
         Thread.sleep(5000);
         //driver.navigate().to(driver.getCurrentUrl());
         driver.navigate().refresh();
@@ -14742,7 +14742,7 @@ public class GeneralBasic {
         int errorCounter = 0;
 
         ////////// Driver 1 //////
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
         Thread.sleep(5000);
         //driver.navigate().to(driver.getCurrentUrl());
         driver.navigate().refresh();
@@ -14761,7 +14761,7 @@ public class GeneralBasic {
         logScreenshot(driver);
 
         //////////////////////////////// Driver 2 ///////////////////////
-        displaySettings_Integration(driver2);
+        displaySettings_General(driver2);
         Thread.sleep(5000);
         //driver.navigate().to(driver.getCurrentUrl());
         driver2.navigate().refresh();
@@ -17098,7 +17098,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
         Thread.sleep(5000);
         //driver.navigate().to(driver.getCurrentUrl());
         driver.navigate().refresh();
@@ -17128,7 +17128,7 @@ public class GeneralBasic {
         boolean isPassed = true;
         int errorCounter = 0;
 
-        displaySettings_Integration(driver);
+        displaySettings_General(driver);
         Thread.sleep(5000);
 
         logMessage("Reload Integration Page 1st time for 2.5 Mins");
