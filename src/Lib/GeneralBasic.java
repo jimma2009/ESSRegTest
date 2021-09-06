@@ -2,14 +2,16 @@ package Lib;
 
 import PageObject.*;
 import org.apache.commons.lang3.time.StopWatch;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.testng.util.Strings;
 
@@ -5011,12 +5013,7 @@ public class GeneralBasic {
 
     }
 
-    @Test
-    public static void test1() throws MessagingException, IOException, InterruptedException {
-        String verificationCode = JavaMailLib.getVerificationCode("Martin_GREGG_EMP24_ab105", "Password Reset", "mptest1002.dynu.net");
-        logMessage(verificationCode);
 
-    }
 
     public static boolean validateUserBusinessCard(String firstName, String middleName, String lastName, String preferredName, String storeFileName, String isUpdateStore, String isCompare, String testSerialNo, String emailDomainName, WebDriver driver) throws Exception {
         //This function is only working when log on as normal user and search other user
@@ -14695,6 +14692,130 @@ public class GeneralBasic {
     }
 
     public static boolean syncChanges(WebDriver driver, String expectedMessage) throws InterruptedException, IOException {
+        boolean isPassed = false;
+        int errorCounter = 0;
+
+        if (displaySettings_General(driver)){
+            //////////////////////
+            Thread.sleep(5000);
+            //driver.navigate().to(driver.getCurrentUrl());
+            driver.navigate().refresh();
+            Thread.sleep(15000);
+            waitSpinnerDisappear(120, driver);
+            //Get original message from Web API Log
+            String originalMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
+
+            logMessage("Check 'Sync from Payroll'");
+            tickCheckbox("1", PageObj_General.checkbox_SyncFromPayroll(driver), driver);
+
+            logMessage("UnCheck 'Sync Balances For Leave Report.");
+            tickCheckbox("2", PageObj_General.checkbox_SyncBalancesForLeaveReport(driver), driver);
+            logScreenshot(driver);
+
+            PageObj_General.button_Sync(driver).click();
+            Thread.sleep(3000);
+            logMessage("Sync button is clicked.");
+
+            //Click OK button
+            PageObj_General.button_YesSyncAll(driver).click();
+            logMessage("Yes, Sync All button is clicked.");
+            Thread.sleep(20000);
+            waitSpinnerDisappear(120, driver);
+
+            String currentMessage = null;
+            //////////////// Jim adjusted on 19/07/2021 for 20 mins /////////////////
+            int i = 0;
+            for (i = 0; i <= 80; i++) {  //Wait maxim for 20 min
+                //Click Refresh button
+                PageObj_General.button_RefreshSync(driver).click();
+                Thread.sleep(15000);
+                GeneralBasic.waitSpinnerDisappear(120, driver);
+                currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
+                //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
+                if (currentMessage.contains("Successfully imported")) {
+                    logMessage("It tooks " + i * 15 + " Seconds to Sync from Payroll.");
+                    break;
+                }
+            }
+
+            logMessage("The final Sync from Payroll Message is '" + currentMessage + "'.");
+            logScreenshot(driver);
+
+            if (expectedMessage != null) {
+                if (currentMessage.contains(expectedMessage)) {
+                    logMessage("Completed Sync from Payroll Successfullly");
+                    isPassed = true;
+                }
+                else {
+                    logError("Failed Sync from Payroll Data.");
+                    System.out.println("Expected log message: '" + expectedMessage + "'");
+                    errorCounter++;
+                }
+            }
+            //////
+
+            ///////////////////// Sync Balance for Leave Report ///////////////////
+            logMessage("Refresh General Page.");
+            SystemLibrary.refreshPage(driver);
+
+            logMessage("UnCheck 'Sync from Payroll'");
+            tickCheckbox("2", PageObj_General.checkbox_SyncFromPayroll(driver), driver);
+
+            logMessage("Check 'Sync Balances For Leave Report.");
+            tickCheckbox("1", PageObj_General.checkbox_SyncBalancesForLeaveReport(driver), driver);
+            logScreenshot(driver);
+
+            PageObj_General.button_Sync(driver).click();
+            Thread.sleep(3000);
+            logMessage("Sync button is clicked.");
+
+            //Click OK button
+            PageObj_General.button_YesSyncLeaveBalance(driver).click();
+            logMessage("Yes, Sync Leave Balance button is clicked.");
+            Thread.sleep(20000);
+            waitSpinnerDisappear(120, driver);
+
+            currentMessage = null;
+            //////////////// Jim adjusted on 19/07/2021 for 20 mins /////////////////
+            int j = 0;
+            for (j = 0; j <= 80; j++) {  //Wait maxim for 20 min
+                //Click Refresh button
+                PageObj_General.button_RefreshSync(driver).click();
+                Thread.sleep(15000);
+                GeneralBasic.waitSpinnerDisappear(120, driver);
+                currentMessage = PageObj_General.getTopMessageFromWebAPILog(driver);
+                //if (PageObj_Integration.button_SyncAllData(driver).isEnabled()){
+                if (currentMessage.contains("Successfully synced leave balances")) {
+                    logMessage("It tooks " + j * 15 + " Seconds to Sync Balance For Leave Report.");
+                    break;
+                }
+            }
+
+            logMessage("The final Sync Balance For Leave Report Message is '" + currentMessage + "'.");
+            logScreenshot(driver);
+
+            if (expectedMessage != null) {
+                if (currentMessage.contains("Successfully synced leave")) {
+                    logMessage("Completed Sync Balance for Leave Report Successfullly");
+                    isPassed = true;
+                }
+                else {
+                    logError("Failed Sync Balance for Leave Report.");
+                    System.out.println("Expected log message: 'Successfully synced leave'");
+                    errorCounter++;
+                }
+            }
+
+            //////
+        }else{
+            errorCounter++;
+        }
+
+        if (errorCounter == 0) isPassed = true;
+        return isPassed;
+    }
+
+    public static boolean syncChanges_OLD2(WebDriver driver, String expectedMessage) throws InterruptedException, IOException {
         boolean isPassed = true;
         int errorCounter = 0;
 

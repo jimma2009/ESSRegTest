@@ -191,7 +191,8 @@ public class ESSRegTestI_Sync {
         myAssert.assertAll();
     }
 
-    @Test(priority = 10022)
+    ////////////////////// Disabled by Jim on 06/09/2021 //////////////////////
+  /*  @Test(priority = 10022)
     public void testI10022_SyncAllAndSyncChangesSimultaneously1() throws InterruptedException, IOException, Exception {
         //Step 2.3
         SystemLibrary.logMessage("*** Start Test I10022.");
@@ -211,9 +212,10 @@ public class ESSRegTestI_Sync {
         driver.close();
         SystemLibrary.logMessage("*** End of Test I10022.");
         myAssert.assertAll();
-    }
+    }*/
 
-    @Test(priority = 10023)
+    /////////// Disabled by Jim on 06/09/2021 //////////////////
+  /*  @Test(priority = 10023)
     public void testI10023_SyncChangesAndSyncAllSimultaneously2() throws InterruptedException, IOException, Exception {
         //Step 2.3
         SystemLibrary.logMessage("*** Start Test I10023.");
@@ -242,7 +244,8 @@ public class ESSRegTestI_Sync {
         driver2.close();
         SystemLibrary.logMessage("*** End of Test I10023.");
         myAssert.assertAll();
-    }
+    }*/
+    //////
 
     @Test(priority = 10031) //a
     public void testI10031_ValidateTeamsInitialStatus() throws IOException, InterruptedException, Exception {
