@@ -118,7 +118,7 @@ public class PageObj_General {
 
     public static int getWebAPIKeysTotalCount(WebDriver driver) throws InterruptedException {
         //////////////// Jim updated on 28/07/2021 /////////////////////
-        List<WebElement> apiKeyLists = driver.findElements(By.xpath("//div[@class='page-row' and contains(., 'Web API Keys')]//div[@class='list-container']/form/div"));
+        List<WebElement> apiKeyLists = driver.findElements(By.xpath("//div[@class='list-item-row single-line-huge no-heading']"));
         int listCount = apiKeyLists.size();
 
         //////

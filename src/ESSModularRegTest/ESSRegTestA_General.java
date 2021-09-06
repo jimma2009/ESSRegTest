@@ -325,7 +325,7 @@ public class ESSRegTestA_General {
         myAssert.assertEquals(GeneralBasicHigh.validateIntegrationPage_Main(10041, 10041, testSerialNo, emailDomainName, driver), true, "Faield in Item A3.4: Validate Integration page after adding Web API.");
 
         logMessage("Item A3.5", testSerialNo);
-        myAssert.assertEquals(GeneralBasicHigh.removeIntegrationAPIKey_Main(testSerialNo, driver), true, "Failed in Item A3.5: Remove Web API Key again.");
+        myAssert.assertEquals(GeneralBasicHigh.removeGeneralAPIKey_Main(testSerialNo, driver), true, "Failed in Item A3.5: Remove Web API Key again.");
 
         GeneralBasic.displayDashboard(driver);
         logMessage("Item A3.6: Validate Integration page after remove Web API.", testSerialNo);

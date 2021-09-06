@@ -216,7 +216,7 @@ public class GeneralBasicHigh {
             if (!Strings.isNullOrEmpty(cellData[i][0])) {
                 serialNo = Integer.parseInt(cellData[i][0]);
                 if (Strings.isNullOrEmpty(cellData[i][1])) {
-                    if (!GeneralBasic.removeIntegrationAPIKeys(cellData[i][4], driver)) errorCounter++;
+                    if (!GeneralBasic.removeGeneralAPIKey(cellData[i][4], driver)) errorCounter++;
                 } else {
                     System.out.println("Row " + serialNo + " is ignored.");
                 }
@@ -376,7 +376,7 @@ public class GeneralBasicHigh {
 
         int serialNo=0;
 
-        String[][] cellData=SystemLibraryHigh.readDataFromDatasheet(startSerialNo, endSerialNo,20,"WebAPIConfiguration");
+        String[][] cellData=SystemLibraryHigh.readDataFromDatasheet(startSerialNo, endSerialNo,30,"WebAPIConfiguration");
 
         for (int i = 0; i < cellData.length; i++) {
             if (!Strings.isNullOrEmpty(cellData[i][0])) {
@@ -3482,12 +3482,12 @@ public class GeneralBasicHigh {
         return isPassed;
     }
 
-    public static boolean removeIntegrationAPIKey_Main(String testSerialNo, WebDriver driver) throws InterruptedException, IOException{
+    public static boolean removeGeneralAPIKey_Main(String testSerialNo, WebDriver driver) throws InterruptedException, IOException{
         boolean isDone=false;
         int errorCounter=0;
         String dataSourceFilePathName="C:\\TestAutomationProject\\ESSRegTest\\DataSource\\GUIKey_"+testSerialNo+".txt";
         String apiKey=SystemLibrary.getValueFromListFile("GUI Key", ": ", dataSourceFilePathName);
-        if (!GeneralBasic.removeIntegrationAPIKeys(apiKey, driver)) errorCounter++;
+        if (!GeneralBasic.removeGeneralAPIKey(apiKey, driver)) errorCounter++;
         if (errorCounter==0) isDone=true;
         return isDone;
     }

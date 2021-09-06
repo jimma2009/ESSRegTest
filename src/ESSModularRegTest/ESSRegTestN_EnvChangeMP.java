@@ -700,7 +700,7 @@ public class ESSRegTestN_EnvChangeMP {
         GeneralBasicHigh.logonESSMain(101, 101, payrollDBName, testSerialNo, emailDomainName, url_ESS, driver); //Log on ESS as Super User
 
         logMessage("Item N24.1: Remove Web API Key.", testSerialNo);
-        myAssert.assertEquals(GeneralBasicHigh.removeIntegrationAPIKey_Main(testSerialNo, driver),  true, "Failed in Item N24.1: Remove Web API Key.");
+        myAssert.assertEquals(GeneralBasicHigh.removeGeneralAPIKey_Main(testSerialNo, driver),  true, "Failed in Item N24.1: Remove Web API Key.");
 
         logMessage("Item N24.2: Edit Denise M Marital Status", testSerialNo);
         myAssert.assertEquals(GeneralBasicHigh.editMultiPersonalInformation(20571, 20571, testSerialNo, driver), true, "Failed in Item N24.2: Edit Denise M Marital Status");
@@ -718,7 +718,7 @@ public class ESSRegTestN_EnvChangeMP {
         // After discussion with Jim, We spilt this test conditions with two parts
 
         logMessage("Item N24.5: Remove Web API.", testSerialNo);
-        myAssert.assertEquals(GeneralBasicHigh.removeIntegrationAPIKey_Main(testSerialNo, driver),  true, "Failed in Item N24.5: Remove Web API.");
+        myAssert.assertEquals(GeneralBasicHigh.removeGeneralAPIKey_Main(testSerialNo, driver),  true, "Failed in Item N24.5: Remove Web API.");
 
         logMessage("Item N24.4: Apply current period Time In Lieu #1 Leave for Stanley B", testSerialNo);
         myAssert.assertEquals(GeneralBasicHigh.applyMultiLeave(20491, 20491, testSerialNo, driver), true, "Failed in  Item N24.4: Apply current period Time In Lieu #1 Leave for Stanley B");
@@ -880,7 +880,7 @@ public class ESSRegTestN_EnvChangeMP {
         GeneralBasicHigh.logonESSMain(101, 101, payrollDBName, testSerialNo, emailDomainName, url_ESS, driver); //Log on ESS as Super User
 
         logMessage("Item N29.1: Remove Web API Key.", testSerialNo);
-        myAssert.assertEquals(GeneralBasicHigh.removeIntegrationAPIKey_Main(testSerialNo, driver),  true, "Failed in Item N29.1: Remove Web API Key.");
+        myAssert.assertEquals(GeneralBasicHigh.removeGeneralAPIKey_Main(testSerialNo, driver),  true, "Failed in Item N29.1: Remove Web API Key.");
 
         signoutESS(driver);
         driver.close();

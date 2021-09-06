@@ -929,15 +929,22 @@ public class GeneralBasic {
         return element;
     }
 
-    public static boolean removeIntegrationAPIKeys(String apiKey, WebDriver driver) throws InterruptedException, IOException {
+    public static boolean removeGeneralAPIKey(String apiKey, WebDriver driver) throws InterruptedException, IOException {
         GeneralBasic.displaySettings_General(driver);
         boolean isRemoved = false;
 
-        if (PageObj_General.clickIntegrationAPIKeysButton(apiKey, driver)) {
-            driver.findElement(By.linkText("Remove")).click();
+        String xpath_EllipsisButton_API="//div[@class='list-item-row single-line-huge no-heading' and contains(., '"+apiKey+"')]//button";
+        WebElement ellipsisButton_API=SystemLibrary.waitChild(xpath_EllipsisButton_API, 10, 1, driver);
+        if (ellipsisButton_API!=null) {
+            ellipsisButton_API.click();
+            logMessage("API Ellipsis Button is found and clicked.");
             Thread.sleep(3000);
-            GeneralBasic.waitSpinnerDisappear(120, driver);
+            logScreenshot(driver);
+
+            driver.findElement(By.xpath("//a[contains(text(),'Remove')]")).click();
             logMessage("Web API remove menu is clicked.");
+            GeneralBasic.waitSpinnerDisappear(120, driver);
+            logScreenshot(driver);
             isRemoved = true;
         }
         return isRemoved;
@@ -3156,86 +3163,100 @@ public class GeneralBasic {
         }
 
         displaySettings_General(driver);
-        if (PageObj_General.clickIntegrationAPIKeysButton(apiKey, driver)) {
-            driver.findElement(By.linkText("Edit")).click();
-            Thread.sleep(2000);
+
+        String xpath_EllipsisButton_API="//div[@class='list-item-row single-line-huge no-heading' and contains(., '"+apiKey+"')]//button";
+        WebElement ellipsisButton_API=SystemLibrary.waitChild(xpath_EllipsisButton_API, 10, 1, driver);
+        if (ellipsisButton_API!=null) {
+            ellipsisButton_API.click();
+            logMessage("API Ellipsis Button is found and clicked.");
+            Thread.sleep(3000);
+            logScreenshot(driver);
+
+            driver.findElement(By.xpath("//a[contains(text(),'Edit')]")).click();
             logMessage("Web API Edit menu is clicked.");
-        } else {
+            GeneralBasic.waitSpinnerDisappear(120, driver);
+            logScreenshot(driver);
+
+            ///////////////// Insert Here /////////////////
+
+            if (userName != null) {
+                PageObj_General.textbox_Username(driver).click();
+                clearTextBox(PageObj_General.textbox_Username(driver));
+                PageObj_General.textbox_Username(driver).sendKeys(userName);
+                logMessage("Username: " + userName + " is input.");
+            }
+
+            //Cannot edit password
+
+
+            if (apiKey != null) {
+                PageObj_General.textbox_Apikey(driver).click();
+                clearTextBox(PageObj_General.textbox_Apikey(driver));
+                PageObj_General.textbox_Apikey(driver).sendKeys(apiKey);
+                logMessage("Api Key: " + apiKey + " is input.");
+            }
+
+            if (databaseAlias != null) {
+                PageObj_General.textbox_DatabaseAlias(driver).click();
+                clearTextBox(PageObj_General.textbox_DatabaseAlias(driver));
+                PageObj_General.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
+                logMessage("Database Alias: " + databaseAlias + " is input.");
+            }
+
+            if (termFromDate != null) {
+
+                if (termFromDate.contains(";")) {
+                    termFromDate = SystemLibrary.getExpectedDate(termFromDate, null);
+                }
+
+                PageObj_General.textbox_TermFromDate(driver).click();
+                clearTextBox(PageObj_General.textbox_TermFromDate(driver));
+                PageObj_General.textbox_TermFromDate(driver).sendKeys(termFromDate);
+                logMessage("Import Terminated Employees from Date: " + termFromDate + " is input.");
+            }
+
+            logMessage("Screenshot before click Save Button.");
+            logScreenshotElement(driver, PageObj_General.form_AddEditAPIKey(driver));
+
+            driver.findElement(By.xpath("//button[contains(text(),'Save')]")).click();
+            logMessage("Button Save is clicked.");
+            Thread.sleep(30000);
+            logScreenshot(driver);
+
+            String currentErrorMessage = PageObj_General.getReturnErrorMessageFromIntegrationScreen(driver);
+            if (currentErrorMessage != null) {
+                if (currentErrorMessage.length() > 0) {
+                    logMessage("The current return message is:\n" + currentErrorMessage);
+                    logMessage("The current screenshot of error message from screen.");
+                    logScreenshotElement(driver, PageObj_General.label_ErrorMessageReturn(driver));
+                }
+            }
+
+            if (errorMessageReturn != null) {
+
+                try {
+                    if (currentErrorMessage.equals(errorMessageReturn)) {
+                        logMessage("The current return message is: " + currentErrorMessage);
+                        logMessage("Message return is shown as expected.");
+                    } else {
+                        String strMessage = "The current return message is NOT the same as expected. \nThe Current return Message is:\n " + currentErrorMessage + "\nExpceted Message is:\n " + errorMessageReturn;
+                        logError(strMessage);
+                        errorCounter++;
+                    }
+                } catch (Exception e) {
+                    logMessage("No return message is currently return.");
+                    errorCounter++;
+                }
+            }
+
+
+            ////// End of Insert here //////
+
+        }else{
+            logError("API button is NOT found.");
             errorCounter++;
         }
 
-        if (userName != null) {
-            PageObj_General.textbox_Username(driver).click();
-            clearTextBox(PageObj_General.textbox_Username(driver));
-            PageObj_General.textbox_Username(driver).sendKeys(userName);
-            logMessage("Username: " + userName + " is input.");
-        }
-
-        //Cannot edit password
-
-
-        if (apiKey != null) {
-            PageObj_General.textbox_Apikey(driver).click();
-            clearTextBox(PageObj_General.textbox_Apikey(driver));
-            PageObj_General.textbox_Apikey(driver).sendKeys(apiKey);
-            logMessage("Api Key: " + apiKey + " is input.");
-        }
-
-        if (databaseAlias != null) {
-            PageObj_General.textbox_DatabaseAlias(driver).click();
-            clearTextBox(PageObj_General.textbox_DatabaseAlias(driver));
-            PageObj_General.textbox_DatabaseAlias(driver).sendKeys(databaseAlias);
-            logMessage("Database Alias: " + databaseAlias + " is input.");
-        }
-
-        if (termFromDate != null) {
-
-            if (termFromDate.contains(";")) {
-                termFromDate = SystemLibrary.getExpectedDate(termFromDate, null);
-            }
-
-            PageObj_General.textbox_TermFromDate(driver).click();
-            clearTextBox(PageObj_General.textbox_TermFromDate(driver));
-            PageObj_General.textbox_TermFromDate(driver).sendKeys(termFromDate);
-            logMessage("Import Terminated Employees from Date: " + termFromDate + " is input.");
-        }
-
-        logMessage("Screenshot before click Save Button.");
-
-        logScreenshotElement(driver, PageObj_General.form_AddEditAPIKey(driver));
-        PageObj_General.button_AddEdit(driver).click();
-        logMessage("Button Add is clicked.");
-        Thread.sleep(10000);
-
-        String currentErrorMessage = PageObj_General.getReturnErrorMessageFromIntegrationScreen(driver);
-        if (currentErrorMessage != null) {
-            if (currentErrorMessage.length() > 0) {
-                logMessage("The current return message is:\n" + currentErrorMessage);
-                logMessage("The current screenshot of error message from screen.");
-                logScreenshotElement(driver, PageObj_General.label_ErrorMessageReturn(driver));
-            }
-        }
-
-        if (errorMessageReturn != null) {
-
-            try {
-                if (currentErrorMessage.equals(errorMessageReturn)) {
-                    logMessage("The current return message is: " + currentErrorMessage);
-                    logMessage("Message return is shown as expected.");
-                } else {
-                    String strMessage = "The current return message is NOT the same as expected. \nThe Current return Message is:\n " + currentErrorMessage + "\nExpceted Message is:\n " + errorMessageReturn;
-                    logError(strMessage);
-                    errorCounter++;
-                }
-            } catch (Exception e) {
-                logMessage("No return message is currently return.");
-                errorCounter++;
-            }
-        }
-
-        logMessage("Screenshot after clicking Add button");
-        Thread.sleep(5000);
-        logScreenshotElement(driver, driver.findElement(By.xpath("//*[@id=\"page-container\"]/main/div/div[2]")));
 
         if (errorCounter == 0) isDone = true;
         return isDone;
