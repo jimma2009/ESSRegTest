@@ -399,7 +399,7 @@ public class GeneralBasicHigh {
     public static boolean syncAllData_Main(int startSerialNo, int endSerialNo, WebDriver driver) throws InterruptedException, IOException{
         SystemLibrary.logMessage("--- Start multi Sync All Data from row " + startSerialNo + " to " + endSerialNo + " in \"WebAPIConfiguration\" sheet.");
 
-        boolean isPassed=true;
+        boolean isPassed=false;
         int errorCounter=0;
 
         int serialNo=0;
@@ -427,7 +427,7 @@ public class GeneralBasicHigh {
 
         SystemLibrary.logMessage("*** End of multi Sync All Data.");
 
-        if (errorCounter>0) isPassed=false;
+        if (errorCounter==0) isPassed=true;
         return isPassed;
     }
 

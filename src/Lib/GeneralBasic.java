@@ -1262,7 +1262,6 @@ public class GeneralBasic {
             if (expectedMessage != null) {
                 if (currentMessage.contains("Successfully synced leave")) {
                     logMessage("Completed Sync Balance for Leave Report Successfullly");
-                    isPassed = true;
                 }
                 else {
                     logError("Failed Sync Balance for Leave Report.");
