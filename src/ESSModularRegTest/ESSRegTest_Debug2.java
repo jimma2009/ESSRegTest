@@ -24,8 +24,8 @@ public class ESSRegTest_Debug2 {
 
     @Test
     public static void ManageDBs() throws InterruptedException, UnknownHostException {
-        int dbRowNumber_Start=191;
-        int dbRowNumber_End=192;
+        int dbRowNumber_Start=101;
+        int dbRowNumber_End=102;
 
         //DBManage.deleteMultiDB(dbRowNumber_Start, dbRowNumber_End);
         //DBManage.restoreMultiDB(dbRowNumber_Start, dbRowNumber_End);

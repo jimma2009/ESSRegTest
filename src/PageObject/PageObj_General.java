@@ -154,7 +154,11 @@ public class PageObj_General {
     }
 
     public static WebElement button_YesSyncAll(WebDriver driver){
-        return driver.findElement(By.xpath("//button[@type='submit' and contains(text(), 'Yes, sync all')]"));
+        WebElement element=waitChild("//button[contains(text(),'Yes, sync from payroll')]", 10, 1, driver);
+        if (element.equals(null)){
+            element=waitChild("//button[contains(text(),'Yes, sync changes')]", 10, 1, driver);
+        }
+        return element;
     }
 
     public static WebElement button_YesSyncChanges(WebDriver driver){
