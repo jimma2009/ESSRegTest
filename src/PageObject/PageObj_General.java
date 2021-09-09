@@ -155,7 +155,7 @@ public class PageObj_General {
 
     public static WebElement button_YesSyncAll(WebDriver driver){
         WebElement element=waitChild("//button[contains(text(),'Yes, sync from payroll')]", 10, 1, driver);
-        if (element.equals(null)){
+        if (element==null){
             element=waitChild("//button[contains(text(),'Yes, sync changes')]", 10, 1, driver);
         }
         return element;

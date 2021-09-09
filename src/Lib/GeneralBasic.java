@@ -14716,12 +14716,14 @@ public class GeneralBasic {
             PageObj_General.button_Sync(driver).click();
             Thread.sleep(3000);
             logMessage("Sync button is clicked.");
+            logScreenshot(driver);
 
             //Click OK button
             PageObj_General.button_YesSyncAll(driver).click();
             logMessage("Yes, Sync All button is clicked.");
             Thread.sleep(20000);
             waitSpinnerDisappear(120, driver);
+            logScreenshot(driver);
 
             String currentMessage = null;
             //////////////// Jim adjusted on 19/07/2021 for 20 mins /////////////////
